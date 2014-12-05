@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+     <!-- When selected, use grey -->
+    <item android:drawable="@drawable/button_nosfx"
+          android:state_checked="true" />
+    <!-- When not selected, use white-->
+    <item android:drawable="@drawable/button_sfx"
+        android:state_checked="false"/>
+
+</selector>
+<!-- From: file:/home/quiin/Development/android/AndroidstudioProjects/GCrusher/app/src/main/res/drawable-ldpi/check2.xml -->
