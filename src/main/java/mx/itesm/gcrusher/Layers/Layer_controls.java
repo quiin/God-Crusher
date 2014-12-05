@@ -116,6 +116,7 @@ public class Layer_controls extends CCLayer {
 	private int MAX_MINIONS = 0, MAX_PLATFORMS = 0, TOKENS_FOR_BOSS =0;
 	
 	/*CONSTANTS DECLARATION*/
+
 		
 	private static final CGSize SIZE = CCDirector.sharedDirector().displaySize();
 	private static final CGPoint FLOOR_POSITION = CGPoint.make(SIZE.width/6f,SIZE.height*2/7);
