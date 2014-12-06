@@ -29,6 +29,9 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
+            android:name="mx.itesm.gcrusher.Activities.Win"
+            android:screenOrientation="landscape" />
+        <activity
             android:name="mx.itesm.gcrusher.Activities.Highscores"
             android:screenOrientation="landscape" >
         </activity>
@@ -51,16 +54,16 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="mx.itesm.gcrusher.Activities.Level_rlyeh"
+            android:name="mx.itesm.gcrusher.Activities.LevelRlyeh"
             android:label="@string/title_activity_level_rlyeh"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="mx.itesm.gcrusher.Activities.Level_Egypt"
+            android:name="mx.itesm.gcrusher.Activities.LevelEgypt"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="mx.itesm.gcrusher.Activities.Level_mexico"
+            android:name="mx.itesm.gcrusher.Activities.LevelMexico"
             android:screenOrientation="landscape" >
         </activity>
 

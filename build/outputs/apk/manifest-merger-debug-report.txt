@@ -61,55 +61,61 @@ ADDED from AndroidManifest.xml:31:9
 		ADDED from AndroidManifest.xml:33:13
 	android:name
 		ADDED from AndroidManifest.xml:32:13
+activity#mx.itesm.gcrusher.Activities.Win
+ADDED from AndroidManifest.xml:36:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:37:13
+	android:name
+		ADDED from AndroidManifest.xml:36:19
 activity#mx.itesm.gcrusher.Activities.Highscores
-ADDED from AndroidManifest.xml:37:9
+ADDED from AndroidManifest.xml:40:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:39:13
+		ADDED from AndroidManifest.xml:42:13
 	android:name
-		ADDED from AndroidManifest.xml:38:13
+		ADDED from AndroidManifest.xml:41:13
 activity#mx.itesm.gcrusher.Activities.Instructions
-ADDED from AndroidManifest.xml:50:9
+ADDED from AndroidManifest.xml:53:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:52:13
+		ADDED from AndroidManifest.xml:55:13
 	android:name
-		ADDED from AndroidManifest.xml:51:13
+		ADDED from AndroidManifest.xml:54:13
 activity#mx.itesm.gcrusher.Activities.LevelSelection
-ADDED from AndroidManifest.xml:56:9
+ADDED from AndroidManifest.xml:59:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:58:13
+		ADDED from AndroidManifest.xml:61:13
 	android:label
-		ADDED from AndroidManifest.xml:59:13
+		ADDED from AndroidManifest.xml:62:13
 	android:name
-		ADDED from AndroidManifest.xml:57:13
-activity#mx.itesm.gcrusher.Activities.Level_rlyeh
-ADDED from AndroidManifest.xml:63:9
+		ADDED from AndroidManifest.xml:60:13
+activity#mx.itesm.gcrusher.Activities.LevelRlyeh
+ADDED from AndroidManifest.xml:66:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:64:13
+		ADDED from AndroidManifest.xml:67:13
 	android:label
-		ADDED from AndroidManifest.xml:66:13
+		ADDED from AndroidManifest.xml:69:13
 	android:name
-		ADDED from AndroidManifest.xml:65:13
-activity#mx.itesm.gcrusher.Activities.Level_Egypt
-ADDED from AndroidManifest.xml:69:9
+		ADDED from AndroidManifest.xml:68:13
+activity#mx.itesm.gcrusher.Activities.LevelEgypt
+ADDED from AndroidManifest.xml:72:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:70:13
+		ADDED from AndroidManifest.xml:73:13
 	android:name
-		ADDED from AndroidManifest.xml:71:13
-activity#mx.itesm.gcrusher.Activities.Level_mexico
-ADDED from AndroidManifest.xml:75:9
+		ADDED from AndroidManifest.xml:74:13
+activity#mx.itesm.gcrusher.Activities.LevelMexico
+ADDED from AndroidManifest.xml:78:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:76:13
+		ADDED from AndroidManifest.xml:79:13
 	android:name
-		ADDED from AndroidManifest.xml:77:12
+		ADDED from AndroidManifest.xml:80:12
 activity#mx.itesm.gcrusher.Activities.InstructionsControls
-ADDED from AndroidManifest.xml:85:9
+ADDED from AndroidManifest.xml:88:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:86:13
+		ADDED from AndroidManifest.xml:89:13
 	android:name
-		ADDED from AndroidManifest.xml:85:19
+		ADDED from AndroidManifest.xml:88:19
 activity#mx.itesm.gcrusher.Activities.InstructionsGameplay
-ADDED from AndroidManifest.xml:89:9
+ADDED from AndroidManifest.xml:92:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:90:13
+		ADDED from AndroidManifest.xml:93:13
 	android:name
-		ADDED from AndroidManifest.xml:89:19
+		ADDED from AndroidManifest.xml:92:19
