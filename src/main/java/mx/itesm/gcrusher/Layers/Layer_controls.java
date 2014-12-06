@@ -31,11 +31,13 @@ import org.cocos2d.types.CGSize;
 import org.cocos2d.types.ccColor3B;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.MotionEvent;
 
 import mx.itesm.gcrusher.Activities.LevelSelection;
 import mx.itesm.gcrusher.Activities.SceneCreator;
+import mx.itesm.gcrusher.Activities.Win;
 import mx.itesm.gcrusher.Characters.Boss;
 import mx.itesm.gcrusher.Characters.Minion;
 import mx.itesm.gcrusher.Characters.Yalel;
@@ -101,13 +103,11 @@ public class Layer_controls extends CCLayer {
 	
 	/*RECIEN AGREGADOS*/
 	 
-	CCSprite target = CCSprite.sprite("target.png");
+	CCSprite target = CCSprite.sprite("warning_others/target.png");
 	ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	int iter; // iterator for bullets
 	int boss_bullet_numb; // number of bullets		 
 
-
-	/*NO MODIFICATIONS*/
 	private Yalel yalel;
     boolean bossSpawned;
 	Boss boss;	
@@ -116,10 +116,9 @@ public class Layer_controls extends CCLayer {
 	private int MAX_MINIONS = 0, MAX_PLATFORMS = 0, TOKENS_FOR_BOSS =0;
 	
 	/*CONSTANTS DECLARATION*/
-
-		
 	private static final CGSize SIZE = CCDirector.sharedDirector().displaySize();
 	private static final CGPoint FLOOR_POSITION = CGPoint.make(SIZE.width/6f,SIZE.height*2/7);
+    private static final int MAX_JUMPS = 2;
 	private static final float MINION_MIN = SIZE.height * .25f, MINION_MAX= SIZE.height /2f, ADVANCE_MINION = SIZE.width / 100f;
 	private static final float PLATFORM_MAX_Y= SIZE.height * .75f, PLATFOTM_MIN_Y = SIZE.height /2f, ADVANCE_PLATFORM = SIZE.width / 200f;
 	private static final float NORMAL_BULLET_1=1,NORMAL_BULLET_2=4,BOSS_BAZOOKA=3,BOSS_BASH=2;
@@ -147,7 +146,7 @@ public class Layer_controls extends CCLayer {
 				if (level == 1){
 					MAX_MINIONS = 2;
 					MAX_PLATFORMS = 4;
-					TOKENS_FOR_BOSS = 4;
+					TOKENS_FOR_BOSS = 0;
 					
 				} else if (level == 2){
 					MAX_MINIONS = 4;
@@ -228,13 +227,13 @@ public class Layer_controls extends CCLayer {
 	}
 	public void initButtons() {
 		/*jump button*/
-		jumpButton = CCSprite.sprite("button_jump.png");
+		jumpButton = CCSprite.sprite("buttons/button_jump.png");
 		jumpButton.setScaleX(fx*2);
 		jumpButton.setScaleY(fy*2);
 		jumpButton.setPosition(SIZE.width / 10, SIZE.height / 8);
 
 		/*shoot button*/
-		shootButton = CCSprite.sprite("button_shoot.png");
+		shootButton = CCSprite.sprite("buttons/button_shoot.png");
 		shootButton.setScaleX(fx*2);
 		shootButton.setScaleY(fy*2);		
 		shootButton.setPosition(SIZE.width - SIZE.width / 10, SIZE.height / 8);
@@ -242,13 +241,13 @@ public class Layer_controls extends CCLayer {
 	}
 	public void initLabels() {
 		/*score label*/
-		label_score = (CCLabel.makeLabel("" + yalel.getScore(), "fuentes/shadows.ttf", 32));
+		label_score = (CCLabel.makeLabel("" + yalel.getScore(), "fonts/shadows.ttf", 32));
 		label_score.setPosition(SIZE.width - (SIZE.width / 10),(SIZE.height - SIZE.height / 20));
 		label_score.setScaleX(fx*2);
 		label_score.setScaleY(fy*2);
 		
 		/*ammo label*/
-		label_ammo = CCLabel.makeLabel("a", "fuentes/shadows.ttf", 32);		
+		label_ammo = CCLabel.makeLabel("a", "fonts/shadows.ttf", 32);
 		ccColor3B black = ccColor3B.ccBLACK;
 		/*si es nivel 1, letras negras*/
 		if (level==1){
@@ -267,7 +266,7 @@ public class Layer_controls extends CCLayer {
 		platforms = new ArrayList<Obstacle>();
 		minions =new ArrayList<Minion>();
 		items = new ArrayList<Item>();
-		token = CCSprite.sprite("coin_1.png");
+		token = CCSprite.sprite("animations/coin/coin_1.png");
 		token.setScaleX(fx);
 		token.setScaleY(fy);
 		fillLists();
@@ -285,13 +284,13 @@ public class Layer_controls extends CCLayer {
 		}
 
 		/* fill items */		
-		items.add(new PowerUp(0, "infinite.png"));
-		items.add(new PowerUp(1, "multiplier.png"));
-		items.add(new Item("heart_complete.png", 2, 1));
-		items.add(new Item("heart_half.png", 3, .5f));
-		items.add(new Ammo(4, 20, "ammo_shotgun.png"));
-		items.add(new Ammo(5, 30, "ammo_rifle.png"));
-		items.add(new Ammo(6, 3, "ammo_bazooka.png"));
+		items.add(new PowerUp(0, "items/power-ups/infinite.png"));
+		items.add(new PowerUp(1, "items/power-ups/multiplier.png"));
+		items.add(new Item("items/lifes/heart_complete.png", 2, 1));
+		items.add(new Item("items/lifes/heart_half.png", 3, .5f));
+		items.add(new Ammo(4, 20, "items/ammo/ammo_shotgun.png"));
+		items.add(new Ammo(5, 30, "items/ammo/ammo_rifle.png"));
+		items.add(new Ammo(6, 3, "items/ammo/ammo_bazooka.png"));
 
 	}
 	public void initScalingFactor() {		
@@ -340,7 +339,7 @@ public class Layer_controls extends CCLayer {
 			// insert and display lifes
 			for (int i = 0; i < (int) actual_lifes; i++) {
 				if (this.lifes.isEmpty()) {
-					CCSprite complete_heart = CCSprite.sprite("heart_complete.png");
+					CCSprite complete_heart = CCSprite.sprite("items/lifes/heart_complete.png");
 					complete_heart.setScaleX(fx);
 					complete_heart.setScaleY(fy);
 					complete_heart.setTag(HEART_TAG);
@@ -349,7 +348,7 @@ public class Layer_controls extends CCLayer {
 					lifes.push(complete_heart);
 				} else {
 					CGPoint last_position;
-					CCSprite complete_heart = CCSprite.sprite("heart_complete.png");
+					CCSprite complete_heart = CCSprite.sprite("items/lifes/heart_complete.png");
 					complete_heart.setScaleX(fx);
 					complete_heart.setScaleY(fy);
 					complete_heart.setTag(HEART_TAG);
@@ -365,7 +364,7 @@ public class Layer_controls extends CCLayer {
 			if (heartsToAdd.contains(".5")) {// if there's a decimal: add half
 				// heart
 				CGPoint last_position;
-				CCSprite half_heart = CCSprite.sprite("heart_half.png");
+				CCSprite half_heart = CCSprite.sprite("items/lifes/heart_half.png");
 				half_heart.setScaleX(fx);
 				half_heart.setScaleY(fy);
 				half_heart.setTag(HALF_HEART_TAG);
@@ -596,8 +595,8 @@ public class Layer_controls extends CCLayer {
 //						Log.d("BOSS","VIDA: "+boss.getLifes());
 						
 					}else{
-						/*BOSS IS KILL*/	
-						
+
+						/*BOSS IS KILL*/
 						yalel.resetTokens();
 						updateHighScore();
 						boss.setAlive(false);
@@ -631,7 +630,7 @@ public class Layer_controls extends CCLayer {
 				if (CGRect.intersects(bullet_boss.getSprite().getBoundingBox(), yalel.getSprite().getBoundingBox())){
 					/* damage indicator */
 					if (bullet_boss.getType() != 3){
-						CCSprite damageSprite = CCSprite.sprite("damage.png");
+						CCSprite damageSprite = CCSprite.sprite("warning_others/damage.png");
 						damageSprite.setScaleX(SIZE.width/ damageSprite.getContentSize().width);
 						damageSprite.setScaleY(SIZE.height/ damageSprite.getContentSize().height);
 						damageSprite.setPosition(SIZE.width / 2,SIZE.height / 2);
@@ -675,7 +674,7 @@ public class Layer_controls extends CCLayer {
 					yalel.setLifes(yalel.getLifes()-.5);
 					updateLifes();
 
-					CCSprite damageSprite = CCSprite.sprite("damage.png");
+					CCSprite damageSprite = CCSprite.sprite("warning_others/damage.png");
 					damageSprite.setScaleX(SIZE.width/ damageSprite.getContentSize().width);
 					damageSprite.setScaleY(SIZE.height/ damageSprite.getContentSize().height);
 					damageSprite.setPosition(SIZE.width / 2,SIZE.height / 2);
@@ -705,9 +704,8 @@ public class Layer_controls extends CCLayer {
 //					Log.d("BOSS","VIDA: "+boss.getLifes());
 
 				}else{
+
 					/*BOSS IS KILL*/
-
-
 					yalel.resetTokens();
 					updateHighScore();
 					boss.setAlive(false);
@@ -862,7 +860,7 @@ public class Layer_controls extends CCLayer {
 						SoundEngine.sharedEngine().playEffect(contexto, R.raw.damage);
 
 						/* damage indicator */
-						CCSprite damageSprite = CCSprite.sprite("damage.png");
+						CCSprite damageSprite = CCSprite.sprite("warning_others/damage.png");
 						damageSprite.setScaleX(SIZE.width/ damageSprite.getContentSize().width);
 						damageSprite.setScaleY(SIZE.height/ damageSprite.getContentSize().height);
 						damageSprite.setPosition(SIZE.width / 2,SIZE.height / 2);
@@ -1025,7 +1023,7 @@ public class Layer_controls extends CCLayer {
 						SoundEngine.sharedEngine().playEffect(contexto, R.raw.damage);
 
 						/* damage indicator */
-						CCSprite damageSprite = CCSprite.sprite("damage.png");
+						CCSprite damageSprite = CCSprite.sprite("warning_others/damage.png");
 						damageSprite.setScaleX(SIZE.width/ damageSprite.getContentSize().width);
 						damageSprite.setScaleY(SIZE.height/ damageSprite.getContentSize().height);
 						damageSprite.setPosition(SIZE.width / 2,SIZE.height / 2);
@@ -1186,7 +1184,6 @@ public class Layer_controls extends CCLayer {
 							Layer_tooltip.background.setVisible(false);
 						}
 					}
-
 
 					CCScaleTo scaleDown = CCScaleTo.action(.09f,fx/2);
 					CCScaleTo scaleUp = CCScaleTo.action(.09f,fx*2);
@@ -1379,10 +1376,7 @@ public class Layer_controls extends CCLayer {
 		return true;
 	}
 
-
-
 	/*BANNER SECTION*/
-
 	public void warning_damageDone(float f) {
 		removeChildByTag(DAMAGE_TAG, true);/* removes red frame */
 		unschedule("warning_damageDone");
@@ -1455,7 +1449,7 @@ public class Layer_controls extends CCLayer {
 	public void shoot_bazooka() {
 		Context contexto = CCDirector.sharedDirector().getActivity();
 		SoundEngine.sharedEngine().playEffect(contexto, R.raw.bazooka_shoot);
-		bullet = CCSprite.sprite("bullet_bazooka.png");
+		bullet = CCSprite.sprite("items/bullets/bullet_bazooka.png");
 		this.bullet.setTag(BULLET_TAG);
 		CGPoint position = yalel.getSprite().getPosition();
 		position.x = SIZE.width / 3f;
@@ -1488,7 +1482,7 @@ public class Layer_controls extends CCLayer {
 	public void shoot_rifle() {
 		Context contexto = CCDirector.sharedDirector().getActivity();
 		SoundEngine.sharedEngine().playEffect(contexto, R.raw.rifle_shoot);
-		bullet = CCSprite.sprite("bullet_rifle.png");
+		bullet = CCSprite.sprite("items/bullets/bullet_rifle.png");
 		this.bullet.setTag(BULLET_TAG);
 		CGPoint position = yalel.getSprite().getPosition();
 		position.x = SIZE.width / 3f;
@@ -1504,7 +1498,7 @@ public class Layer_controls extends CCLayer {
 	public void shoot_handgun() {
 		Context contexto = CCDirector.sharedDirector().getActivity();
 		SoundEngine.sharedEngine().playEffect(contexto, R.raw.handgun_shoot);
-		bullet = CCSprite.sprite("bullet_hg.png");
+		bullet = CCSprite.sprite("items/bullets/bullet_hg.png");
 		this.bullet.setTag(BULLET_TAG);
 		CGPoint position = yalel.getSprite().getPosition();
 		position.x = SIZE.width / 3f;
@@ -1527,6 +1521,7 @@ public class Layer_controls extends CCLayer {
 
 	/* UTILITY SECTION */
 	public void jump() {
+        Log.e("JUMP NUMBER",jumpNumber+"");
 		this.jumpNumber =jumpNumber + 1;
 		this.onPlatform=false;
 		CCAction jump = CCJumpTo.action(1, FLOOR_POSITION, SIZE.getHeight() / 2,1);
@@ -1734,16 +1729,20 @@ public class Layer_controls extends CCLayer {
 		boss.getSprite().runAction(appear);
 	}
 	public void removeBoss(Object obj){
-		removeChild(boss.getSprite(), true);
+		/*removeChild(boss.getSprite(), true);
 		Context context = CCDirector.sharedDirector().getActivity();
-		SoundEngine.sharedEngine().playSound(context, R.raw.keyboard_cat2,false);
 		CCCallFuncN showWin = CCCallFuncN.action(this, "showWin");
-		runAction(showWin);
+		runAction(showWin);*/
+        Intent intencion= new Intent(CCDirector.sharedDirector().getActivity(), Win.class);
+        CCDirector.sharedDirector().getActivity().startActivity(intencion);
+        CCDirector.sharedDirector().getActivity().finish();
 	}
 
+/*
 	public void showWin(Object obj){
 		Layer_pause_menu.win.setVisible(true);
 	}
+*/
 
 	public void updateHighScore() {
 		final_score = yalel.getScore();
@@ -1767,12 +1766,12 @@ public class Layer_controls extends CCLayer {
 		 */
 		case 0:
 
-			animation.addFrame("animation_2_hg.png");
-			animation.addFrame("animation_3_hg.png");
-			animation.addFrame("animation_4_hg.png");
-			animation.addFrame("animation_5_hg.png");
-			animation.addFrame("animation_6_hg.png");
-			animation.addFrame("animation_7_hg.png");
+			animation.addFrame("animations/handgun/animation_2_hg.png");
+			animation.addFrame("animations/handgun/animation_3_hg.png");
+			animation.addFrame("animations/handgun/animation_4_hg.png");
+			animation.addFrame("animations/handgun/animation_5_hg.png");
+			animation.addFrame("animations/handgun/animation_6_hg.png");
+			animation.addFrame("animations/handgun/animation_7_hg.png");
 			action = CCAnimate.action(.3f, animation, true);
 			yalel.getSprite().runAction(CCRepeatForever.action(action));
 			this.removeChildByTag(YALEL_SPRITE_TAG, true);
@@ -1780,12 +1779,12 @@ public class Layer_controls extends CCLayer {
 			addChild(yalel.getSprite());
 			break;
 		case 1:
-			animation.addFrame("animation_2_rifle.png");
-			animation.addFrame("animation_3_rifle.png");
-			animation.addFrame("animation_4_rifle.png");
-			animation.addFrame("animation_5_rifle.png");
-			animation.addFrame("animation_6_rifle.png");
-			animation.addFrame("animation_7_rifle.png");
+			animation.addFrame("animations/rifle/animation_2_rifle.png");
+			animation.addFrame("animations/rifle/animation_3_rifle.png");
+			animation.addFrame("animations/rifle/animation_4_rifle.png");
+			animation.addFrame("animations/rifle/animation_5_rifle.png");
+			animation.addFrame("animations/rifle/animation_6_rifle.png");
+			animation.addFrame("animations/rifle/animation_7_rifle.png");
 			action = CCAnimate.action(.3f, animation, true);
 			yalel.getSprite().runAction(CCRepeatForever.action(action));
 			this.removeChildByTag(YALEL_SPRITE_TAG, true);
@@ -1793,12 +1792,12 @@ public class Layer_controls extends CCLayer {
 			addChild(yalel.getSprite());
 			break;
 		case 2:
-			animation.addFrame("animation_2_sg.png");
-			animation.addFrame("animation_3_sg.png");
-			animation.addFrame("animation_4_sg.png");
-			animation.addFrame("animation_5_sg.png");
-			animation.addFrame("animation_6_sg.png");
-			animation.addFrame("animation_7_sg.png");
+			animation.addFrame("animations/shotgun/animation_2_sg.png");
+			animation.addFrame("animations/shotgun/animation_3_sg.png");
+			animation.addFrame("animations/shotgun/animation_4_sg.png");
+			animation.addFrame("animations/shotgun/animation_5_sg.png");
+			animation.addFrame("animations/shotgun/animation_6_sg.png");
+			animation.addFrame("animations/shotgun/animation_7_sg.png");
 			action = CCAnimate.action(.3f, animation, true);
 			yalel.getSprite().runAction(CCRepeatForever.action(action));
 			this.removeChildByTag(YALEL_SPRITE_TAG, true);
@@ -1806,12 +1805,12 @@ public class Layer_controls extends CCLayer {
 			addChild(yalel.getSprite());
 			break;
 		case 3:
-			animation.addFrame("animation_2_bazooka.png");
-			animation.addFrame("animation_3_bazooka.png");
-			animation.addFrame("animation_4_bazooka.png");
-			animation.addFrame("animation_5_bazooka.png");
-			animation.addFrame("animation_6_bazooka.png");
-			animation.addFrame("animation_7_bazooka.png");
+			animation.addFrame("animations/bazooka/animation_2_bazooka.png");
+			animation.addFrame("animations/bazooka/animation_3_bazooka.png");
+			animation.addFrame("animations/bazooka/animation_4_bazooka.png");
+			animation.addFrame("animations/bazooka/animation_5_bazooka.png");
+			animation.addFrame("animations/bazooka/animation_6_bazooka.png");
+			animation.addFrame("animations/bazooka/animation_7_bazooka.png");
 			action = CCAnimate.action(.3f, animation, true);
 			yalel.getSprite().runAction(CCRepeatForever.action(action));
 			this.removeChildByTag(YALEL_SPRITE_TAG, true);
@@ -1819,9 +1818,9 @@ public class Layer_controls extends CCLayer {
 			addChild(yalel.getSprite());
 			break;
 		default:// should never happen
-			animation.addFrame("animation_2.png");
-			animation.addFrame("animation_3.png");
-			animation.addFrame("animation_4.png");
+			animation.addFrame("animations/solo/animation_2.png");
+			animation.addFrame("animations/solo/animation_3.png");
+			animation.addFrame("animations/solo/animation_4.png");
 			action = CCAnimate.action(.3f, animation, true);
 			yalel.getSprite().runAction(CCRepeatForever.action(action));
 			this.removeChildByTag(YALEL_SPRITE_TAG, true);
@@ -1834,24 +1833,24 @@ public class Layer_controls extends CCLayer {
 	public void animation_minions(Minion minion) {
 		CCAnimation moving = CCAnimation.animation("move");
 		if (level==1){
-		moving.addFrame("snake_2.png");
-		moving.addFrame("snake_3.png");
+		moving.addFrame("animations/snake/snake_2.png");
+		moving.addFrame("animations/snake/snake_3.png");
 		CCAnimate action = CCAnimate.action(.5f, moving, true);
 		minion.getSprite().runAction(CCRepeatForever.action(action));
 		}else
 			if (level==2){
-				moving.addFrame("mummy_2.png");
-				moving.addFrame("mummy_3.png");
-				moving.addFrame("mummy_4.png");
-				moving.addFrame("mummy_5.png");
+				moving.addFrame("animations/mummy/mummy_2.png");
+				moving.addFrame("animations/mummy/mummy_3.png");
+				moving.addFrame("animations/mummy/mummy_4.png");
+				moving.addFrame("animations/mummy/mummy_5.png");
 				CCAnimate action = CCAnimate.action(.5f, moving, true);
 				minion.getSprite().runAction(CCRepeatForever.action(action));
 			}else
 				if (level==3){
-					moving.addFrame("medusa_2.png");
-					moving.addFrame("medusa_3.png");
-					moving.addFrame("medusa_4.png");
-					moving.addFrame("medusa_5.png");
+					moving.addFrame("animations/medusa/medusa_2.png");
+					moving.addFrame("animations/medusa/medusa_3.png");
+					moving.addFrame("animations/medusa/medusa_4.png");
+					moving.addFrame("animations/medusa/medusa_5.png");
 					CCAnimate action = CCAnimate.action(.5f, moving, true);
 					minion.getSprite().runAction(CCRepeatForever.action(action));
 
@@ -1861,23 +1860,23 @@ public class Layer_controls extends CCLayer {
 		Context contexto = CCDirector.sharedDirector().getActivity();
 		SoundEngine.sharedEngine().playEffect(contexto, R.raw.explosion);
 
-		explosion = CCSprite.sprite("explotion_missile_1.png");
+		explosion = CCSprite.sprite("animations/bazooka/explosion/explotion_missile_1.png");
 		explosion.setPosition(SIZE.width * 4 / 5f, FLOOR_POSITION.y);
 		explosion.setScaleX(5f * fx);
 		explosion.setScaleY(5f * fy);
 		CCAnimation animation = CCAnimation.animation("nuclear_explosion");
 		CCIntervalAction nuclear_explosion;
-		animation.addFrame("explotion_missile_2.png");
-		animation.addFrame("explotion_missile_3.png");
-		animation.addFrame("explotion_missile_4.png");
-		animation.addFrame("explotion_missile_5.png");
-		animation.addFrame("explotion_missile_6.png");
-		animation.addFrame("explotion_missile_7.png");
-		animation.addFrame("explotion_missile_8.png");
-		animation.addFrame("explotion_missile_9.png");
-		animation.addFrame("explotion_missile_10.png");
-		animation.addFrame("explotion_missile_11.png");
-		animation.addFrame("explotion_missile_12.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_2.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_3.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_4.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_5.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_6.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_7.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_8.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_9.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_10.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_11.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_12.png");
 
 		nuclear_explosion = CCAnimate.action(.5f, animation, true);
 		CCCallFuncN stopShoot = CCCallFuncN.action(this, "stopShoot");
@@ -1896,7 +1895,7 @@ public class Layer_controls extends CCLayer {
 
 	}
 	public void animation_shotgun() {
-		this.bullet = CCSprite.sprite("explotion_1.png");
+		this.bullet = CCSprite.sprite("animations/shotgun/explosion/explotion_1.png");
 		this.bullet.setScaleX(2 * fx);
 		this.bullet.setScaleY(3 * fy);
 		this.bullet.setTag(BULLET_TAG);
@@ -1905,16 +1904,16 @@ public class Layer_controls extends CCLayer {
 		this.bullet.setPosition(position);
 		CCAnimation animation = CCAnimation.animation("shoot");
 		CCIntervalAction shoot;
-		animation.addFrame("explotion_2.png");
-		animation.addFrame("explotion_3.png");
-		animation.addFrame("explotion_4.png");
-		animation.addFrame("explotion_5.png");
-		animation.addFrame("explotion_6.png");
-		animation.addFrame("explotion_7.png");
-		animation.addFrame("explotion_8.png");
-		animation.addFrame("explotion_9.png");
-		animation.addFrame("explotion_10.png");
-		animation.addFrame("explotion_11.png");
+		animation.addFrame("animations/shotgun/explosion/explotion_2.png");
+		animation.addFrame("animations/shotgun/explosion/explotion_3.png");
+		animation.addFrame("animations/shotgun/explosion/explotion_4.png");
+		animation.addFrame("animations/shotgun/explosion/explotion_5.png");
+		animation.addFrame("animations/shotgun/explosion/explotion_6.png");
+		animation.addFrame("animations/shotgun/explosion/explotion_7.png");
+		animation.addFrame("animations/shotgun/explosion/explotion_8.png");
+		animation.addFrame("animations/shotgun/explosion/explotion_9.png");
+		animation.addFrame("animations/shotgun/explosion/explotion_10.png");
+		animation.addFrame("animations/shotgun/explosion/explotion_11.png");
 		shoot = CCAnimate.action(.5f, animation, true);
 		CCCallFuncN endShoot = CCCallFuncN.action(this, "stopShoot");
 		CCSequence sequence = CCSequence.actions(shoot, endShoot);
@@ -1923,23 +1922,23 @@ public class Layer_controls extends CCLayer {
 
 	}
 	public void animationAirMissile(Object obj){
-		boss_explosion = CCSprite.sprite("explotion_missile_1.png");
+		boss_explosion = CCSprite.sprite("animations/bazooka/explosion/explotion_missile_1.png");
 		boss_explosion.setPosition(bullets.get(0).getSprite().getPosition());
 		boss_explosion.setScaleX(4*fx);
 		boss_explosion.setScaleY(4*fy);
 		CCAnimation animation = CCAnimation.animation("nuclear_explosion");
 		CCIntervalAction nuclear_explosion;
-		animation.addFrame("explotion_missile_2.png");
-		animation.addFrame("explotion_missile_3.png");
-		animation.addFrame("explotion_missile_4.png");
-		animation.addFrame("explotion_missile_5.png");
-		animation.addFrame("explotion_missile_6.png");
-		animation.addFrame("explotion_missile_7.png");
-		animation.addFrame("explotion_missile_8.png");
-		animation.addFrame("explotion_missile_9.png");
-		animation.addFrame("explotion_missile_10.png");
-		animation.addFrame("explotion_missile_11.png");
-		animation.addFrame("explotion_missile_12.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_2.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_3.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_4.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_5.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_6.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_7.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_8.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_9.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_10.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_11.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_12.png");
 
 		nuclear_explosion = CCAnimate.action(.5f, animation, true);
 		CCCallFuncN stopShoot = CCCallFuncN.action(this, "stopShoot");
@@ -1950,15 +1949,15 @@ public class Layer_controls extends CCLayer {
 	public void animation_token() {
 		CCAnimation animation = CCAnimation.animation("moveCoin");
 		CCIntervalAction action;
-		animation.addFrame("coin_2.png");
-		animation.addFrame("coin_3.png");
-		animation.addFrame("coin_4.png");
-		animation.addFrame("coin_5.png");
-		animation.addFrame("coin_6.png");
-		animation.addFrame("coin_7.png");
-		animation.addFrame("coin_8.png");
-		animation.addFrame("coin_9.png");
-		animation.addFrame("coin_10.png");
+		animation.addFrame("animations/coin/coin_2.png");
+		animation.addFrame("animations/coin/coin_3.png");
+		animation.addFrame("animations/coin/coin_4.png");
+		animation.addFrame("animations/coin/coin_5.png");
+		animation.addFrame("animations/coin/coin_6.png");
+		animation.addFrame("animations/coin/coin_7.png");
+		animation.addFrame("animations/coin/coin_8.png");
+		animation.addFrame("animations/coin/coin_9.png");
+		animation.addFrame("animations/coin/coin_10.png");
 		action = CCAnimate.action(.3f, animation, true);
 		token.runAction(CCRepeatForever.action(action));
 		addChild(token);
@@ -1970,23 +1969,23 @@ public class Layer_controls extends CCLayer {
 
 		position.x+= boss.getSprite().getBoundingBox().size.width/2;
 
-		explosion = CCSprite.sprite("explotion_missile_1.png");
+		explosion = CCSprite.sprite("animations/bazooka/explosion/explotion_missile_1.png");
 		explosion.setPosition(position);
 		explosion.setScaleX(5f * fx);
 		explosion.setScaleY(5f * fy);
 		CCAnimation animation = CCAnimation.animation("nuclear_explosion");
 		CCIntervalAction nuclear_explosion;
-		animation.addFrame("explotion_missile_2.png");
-		animation.addFrame("explotion_missile_3.png");
-		animation.addFrame("explotion_missile_4.png");
-		animation.addFrame("explotion_missile_5.png");
-		animation.addFrame("explotion_missile_6.png");
-		animation.addFrame("explotion_missile_7.png");
-		animation.addFrame("explotion_missile_8.png");
-		animation.addFrame("explotion_missile_9.png");
-		animation.addFrame("explotion_missile_10.png");
-		animation.addFrame("explotion_missile_11.png");
-		animation.addFrame("explotion_missile_12.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_2.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_3.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_4.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_5.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_6.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_7.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_8.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_9.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_10.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_11.png");
+		animation.addFrame("animations/bazooka/explosion/explotion_missile_12.png");
 
 		nuclear_explosion = CCAnimate.action(.5f, animation, true);
 		CCCallFuncN stopShoot = CCCallFuncN.action(this, "stopShoot");
@@ -1994,8 +1993,6 @@ public class Layer_controls extends CCLayer {
 		explosion.runAction(sequence);
 		addChild(explosion);
 	}
-
-
 	public boolean isOnFloor() {
 		if (yalel.getSprite().getPosition().y == FLOOR_POSITION.y){
 		onFloor = true;
@@ -2004,8 +2001,4 @@ public class Layer_controls extends CCLayer {
 		return onFloor;
 	}	
 
-
-
-
-	
 }

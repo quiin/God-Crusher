@@ -1,21 +1,19 @@
 package mx.itesm.gcrusher.Activities;
 
-
-
 import org.cocos2d.layers.CCScene;
 import org.cocos2d.nodes.CCDirector;
 import org.cocos2d.opengl.CCGLSurfaceView;
 import org.cocos2d.sound.SoundEngine;
 
-
+import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
+
 import android.view.Window;
 import android.view.WindowManager;
 
-public class Level_mexico extends Activity {
-	
+public class LevelRlyeh extends Activity {
+
 	private CCGLSurfaceView glCcglSurfaceView;
 	
 	
@@ -28,7 +26,7 @@ public class Level_mexico extends Activity {
 		//setContentView(R.layout.activity_pantalla_juego);
 		glCcglSurfaceView  = new CCGLSurfaceView(this);
 		setContentView(glCcglSurfaceView);	
-		//yalel = new Yalel();
+		
 	}
 	
 	@Override
@@ -38,12 +36,9 @@ public class Level_mexico extends Activity {
 		CCDirector.sharedDirector().setDeviceOrientation(CCDirector.kCCDeviceOrientationLandscapeLeft);
 		CCDirector.sharedDirector().setDisplayFPS(true);
 		CCDirector.sharedDirector().setAnimationInterval(1.0/60);
-		//Log.w("SPRITE", ""+yalel.sprite.getPosition());
-		CCScene scene = SceneCreator.createScene_mexico();
-		scene.setTag(33);
-		CCDirector.sharedDirector().runWithScene(scene);
-		
-		
+		CCScene scene = SceneCreator.createScene_rlyeh();
+		scene.setTag(35);
+		CCDirector.sharedDirector().runWithScene(scene);		
 	}
 	
 	@Override
@@ -71,6 +66,7 @@ public class Level_mexico extends Activity {
 		super.onResume();	
 		CCDirector.sharedDirector().resume();		
 	}
+
 
 	
 

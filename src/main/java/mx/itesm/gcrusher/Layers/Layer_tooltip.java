@@ -22,26 +22,26 @@ public class Layer_tooltip extends CCLayer {
 	
 	
 	public Layer_tooltip(){
-		background = CCSprite.sprite("background_pause.png");
+		background = CCSprite.sprite("backgrounds/background_pause.png");
 		background.setScaleX(SIZE.width/background.getContentSize().width);
 		background.setScaleY(SIZE.height/background.getContentSize().height);
 		background.setPosition(SIZE.width/2,SIZE.height/2);
 		background.setVisible(true);
 		
-		swipe = CCSprite.sprite("tooltip_swipe.png");
+		swipe = CCSprite.sprite("warning_others/tooltip_swipe.png");
 		swipe.setScaleX(fx);
 		swipe.setScaleY(fy);
 		swipe.setPosition(SIZE.width/2,SIZE.height/2);
 		swipe.setVisible(false);
 		
-		jump = CCLabel.makeLabel("Jump", "fuentes/shadows.ttf", 40);
+		jump = CCLabel.makeLabel("Jump", "fonts/shadows.ttf", 40);
 		jump.setScaleX(fx);
 		jump.setScaleY(fy);
 		jump.setPosition(SIZE.width / 10, SIZE.height / 3.5f);
 		jump.setVisible(true);
 		
 		
-		shoot = CCLabel.makeLabel("Shoot", "fuentes/shadows.ttf", 40);
+		shoot = CCLabel.makeLabel("Shoot", "fonts/shadows.ttf", 40);
 		shoot.setScaleX(fx);
 		shoot.setScaleY(fy);
 		shoot.setPosition(SIZE.width - SIZE.width / 10, SIZE.height / 3.5f);

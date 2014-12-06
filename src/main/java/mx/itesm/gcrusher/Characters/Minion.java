@@ -22,13 +22,13 @@ public  class Minion extends Character {
 	public void setSprite(int level){
 		
 		if (level==1)
-			this.sprite = CCSprite.sprite("snake_1.png");
+			this.sprite = CCSprite.sprite("animations/snake/snake_1.png");
 		else
 			if (level==2)
-				this.sprite = CCSprite.sprite("medusa_1.png");
+				this.sprite = CCSprite.sprite("animations/medusa/medusa_1.png");
 			else
 				if (level==3)
-					this.sprite = CCSprite.sprite("mummy_1.png");
+					this.sprite = CCSprite.sprite("animations/mummy/mummy_1.png");
 		
 		CGSize size = CCDirector.sharedDirector().displaySize();
 		float fx = size.width/800;

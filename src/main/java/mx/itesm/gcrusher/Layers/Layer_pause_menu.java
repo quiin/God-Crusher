@@ -36,47 +36,47 @@ public class Layer_pause_menu extends CCLayer {
 	public Layer_pause_menu(){
 		setIsTouchEnabled(true);
 		
-		background = CCSprite.sprite("background_pause.png");
+		background = CCSprite.sprite("backgrounds/background_pause.png");
 		background.setScaleX(SIZE.width/background.getContentSize().width);
 		background.setScaleY(SIZE.height/background.getContentSize().height);
 		background.setPosition(SIZE.width/2,SIZE.height/2);
 		background.setVisible(false);
 		
 		
-		gameOver = CCSprite.sprite("game_over.png");
+		gameOver = CCSprite.sprite("warning_others/game_over.png");
 		gameOver.setScaleX(SIZE.width/gameOver.getContentSize().width);
 		gameOver.setScaleY(SIZE.height/gameOver.getContentSize().height);
 		gameOver.setPosition(SIZE.width/2,SIZE.height/2);
 		gameOver.setVisible(false);
 		
-		win = CCSprite.sprite("win.jpg");
+		win = CCSprite.sprite("warning_others/win.jpg");
 		win.setScaleX(SIZE.width/win.getContentSize().width);
 		win.setScaleY(SIZE.height/win.getContentSize().height);
 		win.setPosition(SIZE.width/2,SIZE.height/2);
 		win.setVisible(false);
 
-		resumeButton = CCSprite.sprite("button_resume.png");
+		resumeButton = CCSprite.sprite("buttons/button_resume.png");
 		resumeButton.setVisible(false);
 		resumeButton.setPosition(SIZE.width/2,SIZE.height/2);
 		resumeButton.setScaleX(fx);
 		resumeButton.setScaleY(fy);
 		
-		backButton = CCSprite.sprite("button_back.png");
+		backButton = CCSprite.sprite("buttons/button_back.png");
 		backButton.setVisible(false);
 		backButton.setPosition(resumeButton.getPosition().x+SIZE.width/4,SIZE.height/2);
 		backButton.setScaleX(fx);
 		backButton.setScaleY(fy);
 		
-		repeatButton = CCSprite.sprite("button_repeat.png");
+		repeatButton = CCSprite.sprite("buttons/button_repeat.png");
 		repeatButton.setVisible(false);
 		repeatButton.setPosition(resumeButton.getPosition().x-SIZE.width/4,SIZE.height/2);
 		repeatButton.setScaleX(fx);
 		repeatButton.setScaleY(fy);
 		
 		if (MainMenu.effectsEnabled)
-			effectButton = CCSprite.sprite("button_sfx.png");
+			effectButton = CCSprite.sprite("buttons/button_sfx.png");
 		else
-			effectButton = CCSprite.sprite("button_sfx_pressed.png");
+			effectButton = CCSprite.sprite("buttons/button_sfx_pressed.png");
 		
 		effectButton.setVisible(false);
 		effectButton.setPosition(SIZE.width/3,SIZE.height/10);
@@ -84,9 +84,9 @@ public class Layer_pause_menu extends CCLayer {
 		effectButton.setScaleY(fy);
 		
 		if (MainMenu.soundEnabled)
-			soundButton = CCSprite.sprite("button_sound.png");
+			soundButton = CCSprite.sprite("buttons/button_sound.png");
 		else
-			soundButton = CCSprite.sprite("button_sound_pressed.png");
+			soundButton = CCSprite.sprite("buttons/button_sound_pressed.png");
 		
 		soundButton.setVisible(false);
 		soundButton.setPosition(SIZE.width - SIZE.width/3,SIZE.height/10);
@@ -198,8 +198,8 @@ public class Layer_pause_menu extends CCLayer {
 			CCDirector.sharedDirector().resume();
 			
 			ArrayList<Weapon> guns = SceneCreator.yalel.getWeapons();
-			Rifle rifle= null;
-			Bazooka baz = null;
+			Rifle rifle;
+			Bazooka baz;
 			
 			
 			int level = Layer_controls.level;
@@ -244,11 +244,11 @@ public class Layer_pause_menu extends CCLayer {
 			
 			if (MainMenu.soundEnabled){
 				SoundEngine.sharedEngine().setSoundVolume(0f);
-				soundButton.setTexture(CCTextureCache.sharedTextureCache().addImage("button_sound_pressed.png"));
+				soundButton.setTexture(CCTextureCache.sharedTextureCache().addImage("buttons/button_sound_pressed.png"));
 				
 				MainMenu.soundEnabled=false;		
 			}else{			
-				soundButton.setTexture(CCTextureCache.sharedTextureCache().addImage("button_sound.png"));
+				soundButton.setTexture(CCTextureCache.sharedTextureCache().addImage("buttons/button_sound.png"));
 				MainMenu.soundEnabled=true;
 				SoundEngine.sharedEngine().setSoundVolume(1f);
 			}
@@ -261,11 +261,11 @@ public class Layer_pause_menu extends CCLayer {
 				&& touchY <= effect_endY && effectButton.getVisible()){
 			
 			if (MainMenu.effectsEnabled){
-				effectButton.setTexture(CCTextureCache.sharedTextureCache().addImage("button_sfx_pressed.png"));
+				effectButton.setTexture(CCTextureCache.sharedTextureCache().addImage("buttons/button_sfx_pressed.png"));
 				SoundEngine.sharedEngine().setEffectsVolume(0f);
 				MainMenu.effectsEnabled=false;
 			}else{
-				effectButton.setTexture(CCTextureCache.sharedTextureCache().addImage("button_sfx.png"));
+				effectButton.setTexture(CCTextureCache.sharedTextureCache().addImage("buttons/button_sfx.png"));
 				SoundEngine.sharedEngine().playEffect(CCDirector.sharedDirector().getActivity(), R.raw.button_select);
 				MainMenu.effectsEnabled=true;
 				SoundEngine.sharedEngine().setEffectsVolume(1f);

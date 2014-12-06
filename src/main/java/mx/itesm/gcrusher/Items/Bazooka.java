@@ -9,7 +9,7 @@ public class Bazooka extends Weapon {
 
 	public Bazooka() {
 		super();
-		this.sprite= CCSprite.sprite("weapon_bazooka.png");
+		this.sprite= CCSprite.sprite("items/weapons/weapon_bazooka.png");
 		this.bullets = 5;
 		this.type = 3;
 		this.infiniteTime=4;

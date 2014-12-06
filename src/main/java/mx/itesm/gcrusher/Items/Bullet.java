@@ -19,14 +19,14 @@ public class Bullet {
 		
 		if (type == 1 || type == 4){
 			// Handgun bullet
-			this.setSprite("bullet_hg_boss.png");
+			this.setSprite("items/bullets/bullet_hg_boss.png");
 		} else if (type == 2){
 			// Boss bullet
 			this.setBoss(boss);
 			this.setSprite("2");
 		} else if (type == 3){
 			// Air Missile bullet
-			this.setSprite("bullet_bazooka_boss.png");
+			this.setSprite("items/bullets/bullet_bazooka_boss.png");
 		}
 	}
 	
@@ -34,11 +34,11 @@ public class Bullet {
 		if (image.equals("2")){
 			CGSize size = CCDirector.sharedDirector().displaySize();
 			if (boss.type == 1){
-				this.sprite = CCSprite.sprite("boss_mexico.png");	
+				this.sprite = CCSprite.sprite("characters/boss_mexico.png");
 			} else if (boss.type == 2){
-				this.sprite = CCSprite.sprite("boss_egypt.png");
+				this.sprite = CCSprite.sprite("characters/boss_egypt.png");
 			} else if (boss.type == 3){
-				this.sprite = CCSprite.sprite("boss_rlyeh.png");
+				this.sprite = CCSprite.sprite("characters/boss_rlyeh.png");
 			}
 			float fx = size.width/800;
 			float fy = size.height/480;

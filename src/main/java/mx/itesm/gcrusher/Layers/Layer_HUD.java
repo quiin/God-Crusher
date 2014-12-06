@@ -23,7 +23,7 @@ public class Layer_HUD extends CCLayer {
 	
 	public Layer_HUD(Yalel yalel){
 
-		pauseButton = CCSprite.sprite("button_pause.png");
+		pauseButton = CCSprite.sprite("buttons/button_pause.png");
 		pauseButton.setPosition(SIZE.width/20,(SIZE.height-SIZE.height/10));
 		pauseButton.setScaleX(fx);
 		pauseButton.setScale(fy);

@@ -31,7 +31,7 @@ public class Yalel extends Character{
 	public Yalel(){		
 		super();
 		this.score=0;
-		this.setSprite("animation_1_hg.png");		
+		this.setSprite("animations/handgun/animation_1_hg.png");
 
 
 		this.guns = new ArrayList<Weapon>(4);			
@@ -133,7 +133,7 @@ public class Yalel extends Character{
 		switch (index) {	
 		case 0:
 			if (guns.get(0).isPicked()){
-				this.setSprite(CCSprite.sprite("animation_1_hg.png"));
+				this.setSprite(CCSprite.sprite("animations/handgun/animation_1_hg.png"));
 				this.sprite.setScaleX(fx);
 				this.sprite.setScaleY(fy);
 				this.setGun(guns.get(index));
@@ -142,7 +142,7 @@ public class Yalel extends Character{
 			break;
 		case 2:
 			if (guns.get(2).isPicked()){
-				this.setSprite(CCSprite.sprite("animation_1_rifle.png"));
+				this.setSprite(CCSprite.sprite("animations/rifle/animation_1_rifle.png"));
 				this.sprite.setScaleX(fx);
 				this.sprite.setScaleY(fy);
 				this.setGun(guns.get(index));
@@ -151,7 +151,7 @@ public class Yalel extends Character{
 			break;
 		case 1:
 			if (guns.get(1).isPicked()){
-				this.setSprite(CCSprite.sprite("animation_1_sg.png"));
+				this.setSprite(CCSprite.sprite("animations/shotgun/animation_1_sg.png"));
 				this.sprite.setScaleX(fx);
 				this.sprite.setScaleY(fy);
 				this.setGun(guns.get(index));
@@ -160,7 +160,7 @@ public class Yalel extends Character{
 			break;
 		case 3:
 			if (guns.get(3).isPicked()){
-				this.setSprite(CCSprite.sprite("animation_1_bazooka.png"));
+				this.setSprite(CCSprite.sprite("animations/bazooka/animation_1_bazooka.png"));
 				this.sprite.setScaleX(fx);
 				this.sprite.setScaleY(fy);
 				this.setGun(guns.get(index));

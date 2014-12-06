@@ -41,12 +41,16 @@ public class LevelSelection extends Activity {
 		
 	}
 
-	
-	
-	public void showLevelMexico(View v)//SHOW INSTRUCTIONS
+    @Override
+    public void onBackPressed() {
+        Intent intencion= new Intent(this, MainMenu.class);
+        startActivity(intencion);
+    }
+
+    public void showLevelMexico(View v)//SHOW INSTRUCTIONS
 	{	if (MainMenu.effectsEnabled)
 		mexico.start();		
-		Intent intencion=new Intent(this,Level_mexico.class );
+		Intent intencion=new Intent(this,LevelMexico.class );
 		startActivity(intencion);
 		this.finish();
 	}
@@ -55,7 +59,7 @@ public class LevelSelection extends Activity {
 		
 		if (state[1]){
 			rlyeh.start();
-			Intent intencion=new Intent(this,Level_rlyeh.class );
+			Intent intencion=new Intent(this,LevelRlyeh.class );
 			startActivity(intencion);
 		}else
 			nope.start();
@@ -66,7 +70,7 @@ public class LevelSelection extends Activity {
 	{	
 		if (state[0]){
 			egypt.start();
-			Intent intencion=new Intent(this,Level_Egypt.class );
+			Intent intencion=new Intent(this,LevelEgypt.class );
 			startActivity(intencion);
 		}else
 			nope.start();

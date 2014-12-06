@@ -32,6 +32,9 @@
             android:name=".Activities.About"
             android:screenOrientation="landscape" >
         </activity>
+
+        <activity android:name=".Activities.Win"
+            android:screenOrientation="landscape"/>
         
         
         <activity 
@@ -62,19 +65,19 @@
         
         <activity
             android:screenOrientation="landscape"
-            android:name=".Activities.Level_rlyeh"
+            android:name=".Activities.LevelRlyeh"
             android:label="@string/title_activity_level_rlyeh" >
         </activity>
         
         <activity 
             android:screenOrientation="landscape"
-            android:name=".Activities.Level_Egypt"
+            android:name=".Activities.LevelEgypt"
            >
         </activity>
         
         <activity 
             android:screenOrientation="landscape"
-           android:name=".Activities.Level_mexico" >
+           android:name=".Activities.LevelMexico" >
         </activity>
         
         

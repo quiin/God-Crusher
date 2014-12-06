@@ -25,20 +25,20 @@ public class Boss extends Character {
 		this.type = type;
 		if (type == 1){
 			this.setLevel(type-1);
-			this.setSprite("boss_mexico.png");			
+			this.setSprite("characters/boss_mexico.png");
 			this.setAttackPattern(1);
 		} else 
 			if (type == 2) {
 			this.setLevel(type-1);
-			this.setSprite("boss_egypt.png"); // to change
+			this.setSprite("characters/boss_egypt.png"); // to change
 			this.setAttackPattern(2);
 		} else if (type == 3) {
 			this.setLevel(type-1);
-			this.setSprite("boss_rlyeh.png"); // to change
+			this.setSprite("characters/boss_rlyeh.png"); // to change
 			this.setAttackPattern(3);
 		} 
 		else {
-			this.setSprite("theD.png"); // DO NOT change
+			this.setSprite("warning_others/target.png"); // DO NOT change
 //			this.setAttackPattern(0);
 		}
 	}

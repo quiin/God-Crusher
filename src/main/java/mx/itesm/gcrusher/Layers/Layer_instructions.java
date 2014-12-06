@@ -30,7 +30,7 @@ public class Layer_instructions extends CCLayer{
 		fx = size.width / 800;
 		fy = size.height/600;
 		
-		background = CCSprite.sprite("background_instructions.jpg");
+		background = CCSprite.sprite("backgrounds/background_instructions.jpg");
 		background.setPosition(size.width/2,size.height/2);
 		
 		background.setScaleX(size.width/background.getContentSize().width);
@@ -38,13 +38,13 @@ public class Layer_instructions extends CCLayer{
 		
 		ccColor3B black = ccColor3B.ccBLACK;
 		
-		controls = CCLabel.makeLabel("Controls", "fuentes/shadows.ttf", 40);
+		controls = CCLabel.makeLabel("Controls", "fonts/shadows.ttf", 40);
 		controls.setColor(black);
 		controls.setPosition(size.width/4,size.height-size.height/2.5f);
 		controls.setScaleX(fx);
 		controls.setScaleY(fy);
 		
-		gamePlay = CCLabel.makeLabel("Gameplay", "fuentes/shadows.ttf",40);
+		gamePlay = CCLabel.makeLabel("Gameplay", "fonts/shadows.ttf",40);
 		gamePlay.setColor(black);
 		gamePlay.setPosition(controls.getPosition().x,controls.getPosition().y-size.height/5);
 		gamePlay.setScaleX(fx);

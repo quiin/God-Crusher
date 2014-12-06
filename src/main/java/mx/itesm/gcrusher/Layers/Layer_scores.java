@@ -29,71 +29,71 @@ public class Layer_scores extends CCLayer{
 		
 		fx = size.width / 800;
 		fy = size.height/600;
-		background = CCSprite.sprite("background_high_scores.jpg");
+		background = CCSprite.sprite("backgrounds/background_high_scores.jpg");
 		background.setPosition(size.width/2,size.height/2);
 		background.setScaleX(size.width/background.getContentSize().width);
 		background.setScaleY(size.height/background.getContentSize().height);
 		
 		ccColor3B black = ccColor3B.ccBLACK;
-		title_rank = CCLabel.makeLabel("RANK", "fuentes/shadows.ttf", 45);
+		title_rank = CCLabel.makeLabel("RANK", "fonts/shadows.ttf", 45);
 		title_rank.setPosition(size.width/6,size.height-size.height/3);
 		title_rank.setScaleX(fx);
 		title_rank.setScaleY(fy);
 		title_rank.setColor(black);
 		
-		title_score = CCLabel.makeLabel("SCORE", "fuentes/shadows.ttf", 45);
+		title_score = CCLabel.makeLabel("SCORE", "fonts/shadows.ttf", 45);
 		title_score.setPosition(title_rank.getPosition().x+TITLE_SEPARATION,size.height-size.height/3);
 		title_score.setScaleX(fx);
 		title_score.setScaleY(fy);
 		title_score.setColor(black);
 		 
-		title_date = CCLabel.makeLabel("DATE", "fuentes/shadows.ttf", 45);
+		title_date = CCLabel.makeLabel("DATE", "fonts/shadows.ttf", 45);
 		title_date.setPosition(title_score.getPosition().x+1.5f*TITLE_SEPARATION,size.height-size.height/3);
 		title_date.setScaleX(fx);
 		title_date.setScaleY(fy);
 		title_date.setColor(black);
 		
-		first_rank = CCLabel.makeLabel("1.-", "fuentes/shadows.ttf", 45);
+		first_rank = CCLabel.makeLabel("1.-", "fonts/shadows.ttf", 45);
 		first_rank.setPosition(title_rank.getPosition().x,title_rank.getPosition().y-Y_SEPARATION);
 		first_rank.setScaleX(fx);
 		first_rank.setScale(fy);
 		
-		first_score= CCLabel.makeLabel("0 ", "fuentes/shadows.ttf", 45);
+		first_score= CCLabel.makeLabel("0 ", "fonts/shadows.ttf", 45);
 		first_score.setPosition(title_score.getPosition().x,title_score.getPosition().y-Y_SEPARATION);
 		first_score.setScaleX(fx);
 		first_score.setScale(fy);		
 		
-		first_date = CCLabel.makeLabel("MM DD YY HH MM", "fuentes/shadows.ttf", 45);
+		first_date = CCLabel.makeLabel("MM DD YY HH MM", "fonts/shadows.ttf", 45);
 		first_date.setPosition(title_date.getPosition().x+Y_SEPARATION,title_score.getPosition().y-Y_SEPARATION);
 		first_date.setScaleX(fx);
 		first_date.setScaleY(fy);
 		
-		second_rank = CCLabel.makeLabel("2.- ", "fuentes/shadows.ttf", 45);
+		second_rank = CCLabel.makeLabel("2.- ", "fonts/shadows.ttf", 45);
 		second_rank.setPosition(first_rank.getPosition().x,first_rank.getPosition().y-Y_SEPARATION);
 		second_rank.setScaleX(fx);
 		second_rank.setScaleY(fy);
 		
-		second_score = CCLabel.makeLabel("0 ", "fuentes/shadows.ttf", 45);
+		second_score = CCLabel.makeLabel("0 ", "fonts/shadows.ttf", 45);
 		second_score.setPosition(first_score.getPosition().x,first_score.getPosition().y-Y_SEPARATION);
 		second_score.setScaleX(fx);
 		second_score.setScaleY(fy);
 		
-		second_date = CCLabel.makeLabel("MM DD YY HH MM", "fuentes/shadows.ttf", 45);
+		second_date = CCLabel.makeLabel("MM DD YY HH MM", "fonts/shadows.ttf", 45);
 		second_date.setPosition(first_date.getPosition().x,first_date.getPosition().y-Y_SEPARATION);
 		second_date.setScaleX(fx);
 		second_date.setScaleY(fy);
 		
-		third_rank = CCLabel.makeLabel("3.- ", "fuentes/shadows.ttf", 45);
+		third_rank = CCLabel.makeLabel("3.- ", "fonts/shadows.ttf", 45);
 		third_rank.setPosition(second_rank.getPosition().x,second_rank.getPosition().y-Y_SEPARATION);
 		third_rank.setScaleX(fx);
 		third_rank.setScaleY(fy);
 		
-		third_score = CCLabel.makeLabel("0 ", "fuentes/shadows.ttf", 45);
+		third_score = CCLabel.makeLabel("0 ", "fonts/shadows.ttf", 45);
 		third_score.setPosition(second_score.getPosition().x,second_score.getPosition().y-Y_SEPARATION);
 		third_score.setScaleX(fx);
 		third_score.setScaleY(fy);
 		
-		third_date = CCLabel.makeLabel("MM DD YY HH MM", "fuentes/shadows.ttf", 45);
+		third_date = CCLabel.makeLabel("MM DD YY HH MM", "fonts/shadows.ttf", 45);
 		third_date.setPosition(second_date.getPosition().x,second_date.getPosition().y-Y_SEPARATION);
 		third_date.setScaleX(fx);
 		third_date.setScaleY(fy);
@@ -123,6 +123,7 @@ public class Layer_scores extends CCLayer{
 		
 		Collections.sort(scores,Collections.reverseOrder(c));
 		
+
 		Log.d("SCORE", "BEFORE UPDATE");
 		for (int i=0;i<3;i++){
 			Log.d("SCORE", ""+(i+1)+".- "+scores.get(i));

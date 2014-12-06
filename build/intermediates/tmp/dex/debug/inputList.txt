@@ -1,0 +1,5 @@
+/home/quiin/Development/android/AndroidstudioProjects/GCrusher/app/build/intermediates/classes/debug
+/home/quiin/Development/android/AndroidstudioProjects/GCrusher/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-e49f70ccc3057c7f0713bfb9a007ec2b31408d5b.jar
+/home/quiin/Development/android/AndroidstudioProjects/GCrusher/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-095205f4697798584c4209085649fdfbd6ad0ffa.jar
+/home/quiin/Development/android/AndroidstudioProjects/GCrusher/app/build/intermediates/pre-dexed/debug/classes-bc338845e5d158b799b76358ef281a711de82325.jar
+/home/quiin/Development/android/AndroidstudioProjects/GCrusher/app/build/intermediates/pre-dexed/debug/cocos2d-android-af7a0ca6c5b507218512ef3b51ea716d9f44b05d.jar

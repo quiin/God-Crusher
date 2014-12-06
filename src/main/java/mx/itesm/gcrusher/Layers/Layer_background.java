@@ -32,14 +32,14 @@ public class Layer_background extends CCLayer {
 		
 		Context contexto = CCDirector.sharedDirector().getActivity();
 		
-		if (bg_1.equalsIgnoreCase("Background_lvl1_1.jpg")){
+		if (bg_1.equalsIgnoreCase("backgrounds/Background_lvl1_1.jpg")){
 			SoundEngine.sharedEngine().playSound(contexto, R.raw.mexico_background, true);
 		}
 		
-		if (bg_1.equalsIgnoreCase("Background_lvl2_1.jpg")){
+		if (bg_1.equalsIgnoreCase("backgrounds/Background_lvl2_1.jpg")){
 			SoundEngine.sharedEngine().playSound(contexto, R.raw.egypt_background, true);
 		}
-		if (bg_1.equalsIgnoreCase("Background_lvl3_1.jpg")){
+		if (bg_1.equalsIgnoreCase("backgrounds/Background_lvl3_1.jpg")){
 			SoundEngine.sharedEngine().playSound(contexto, R.raw.rlyeh_background, true);
 		}
 		

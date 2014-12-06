@@ -23,24 +23,24 @@ public class SceneCreator extends Activity{
 	 
 
 	 public static  CCScene createScene_mexico(){		 		
-		yalel = new Yalel();		
-		CCScene sceneMexico = CCScene.node();						
-		Layer_background background = new Layer_background("Background_lvl1_1.jpg","Background_lvl1_2.jpg");
-		Layer_HUD hud = new Layer_HUD(yalel);
-		Layer_controls controls = new Layer_controls(yalel,1);
-		Layer_tooltip tip = new Layer_tooltip();
-		Layer_pause_menu pause= new Layer_pause_menu();
-		sceneMexico.addChild(background);		
-		sceneMexico.addChild(controls);	
-		sceneMexico.addChild(hud);
-		sceneMexico.addChild(tip);
-		sceneMexico.addChild(pause);		
-		return sceneMexico;
+            yalel = new Yalel();
+            CCScene sceneMexico = CCScene.node();
+            Layer_background background = new Layer_background("backgrounds/Background_lvl1_1.jpg", "backgrounds/Background_lvl1_2.jpg");
+            Layer_HUD hud = new Layer_HUD(yalel);
+            Layer_controls controls = new Layer_controls(yalel,1);
+            Layer_tooltip tip = new Layer_tooltip();
+            Layer_pause_menu pause= new Layer_pause_menu();
+            sceneMexico.addChild(background);
+            sceneMexico.addChild(controls);
+            sceneMexico.addChild(hud);
+            sceneMexico.addChild(tip);
+            sceneMexico.addChild(pause);
+            return sceneMexico;
 	}
 	 
 	 public static  CCScene createScene_egypt(){			 	
 			CCScene sceneEgypt = CCScene.node();						
-			Layer_background background = new Layer_background("Background_lvl2_1.jpg","Background_lvl2_2.jpg");							
+			Layer_background background = new Layer_background("backgrounds/Background_lvl2_1.jpg", "backgrounds/Background_lvl2_2.jpg");
 			Layer_HUD hud = new Layer_HUD(yalel);
 			Layer_controls controls = new Layer_controls(yalel,2);
 			Layer_pause_menu pause= new Layer_pause_menu();								
@@ -53,7 +53,7 @@ public class SceneCreator extends Activity{
 	 
 	 public static  CCScene createScene_rlyeh(){				
 			CCScene sceneRlyeh = CCScene.node();						
-			Layer_background background = new Layer_background("Background_lvl3_1.jpg","Background_lvl3_2.jpg");				
+			Layer_background background = new Layer_background("backgrounds/Background_lvl3_1.jpg", "backgrounds/Background_lvl3_2.jpg");
 			Layer_HUD hud = new Layer_HUD(yalel);
 			Layer_controls controls = new Layer_controls(yalel,3);
 			Layer_pause_menu pause= new Layer_pause_menu();					

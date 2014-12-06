@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_win"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your score"
+        android:id="@+id/lbl_score"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:textSize="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="97dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Highest score"
+        android:id="@+id/lbl_highest"
+        android:textSize="30dp"
+        android:layout_alignBottom="@+id/lbl_score"
+        android:layout_toRightOf="@+id/lbl_score"
+        android:layout_toEndOf="@+id/lbl_score"
+        android:layout_marginLeft="46dp"
+        android:layout_marginStart="76dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="30dp"
+        android:id="@+id/nbr_score"
+        android:layout_below="@+id/lbl_score"
+        android:layout_alignLeft="@+id/lbl_score"
+        android:layout_alignStart="@+id/lbl_score"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="50dp"
+        tools:ignore="RtlCompat" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textSize="30dp"
+        android:id="@+id/nbr_highest"
+        android:layout_below="@+id/lbl_highest"
+        android:layout_alignLeft="@+id/lbl_highest"
+        android:layout_alignStart="@+id/lbl_highest"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="80dp"
+        tools:ignore="RtlCompat" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_repeat"
+        android:id="@+id/repeatButton"
+        android:clickable="true"
+        android:onClick="retry"
+        android:layout_below="@id/nbr_score"
+        android:layout_marginTop="25dp"
+        android:layout_toStartOf="@+id/lbl_highest"
+        android:layout_toLeftOf="@+id/lbl_highest"
+        />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_next"
+        android:id="@+id/backButton"
+        android:onClick="next"
+        android:layout_alignBottom="@+id/repeatButton"
+        android:layout_alignLeft="@+id/nbr_highest"
+        android:layout_alignStart="@+id/nbr_highest"
+        android:layout_alignTop="@+id/repeatButton" />
+
+</RelativeLayout>

@@ -17,16 +17,16 @@ public class Obstacle{
 	public Obstacle(int level){ //NUNCA DEBE USARSE .-.
 		switch (level) {
 		case 1:
-			this.setSprite(CCSprite.sprite("platform_mexico.png"));
+			this.setSprite(CCSprite.sprite("platforms/platform_mexico.png"));
 			break;
 		case 2:
-			this.setSprite(CCSprite.sprite("platform_egypt.png"));
+			this.setSprite(CCSprite.sprite("platforms/platform_egypt.png"));
 			break;
 		case 3:
-			this.setSprite(CCSprite.sprite("platform_rlyeh.png"));
+			this.setSprite(CCSprite.sprite("platforms/platform_rlyeh.png"));
 			break;
 		default:
-			this.setSprite(CCSprite.sprite("platform_mexico.png"));
+			this.setSprite(CCSprite.sprite("platforms/platform_mexico.png"));
 			break;
 		}		
 		this.sprite.setScaleX(fx);
