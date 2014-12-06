@@ -12,8 +12,9 @@ advanced weapons and power-ups so you can make your way into R'lyeh and finally 
 
 Developers
 ==========
-Carlos Reyna
-Diego Monroy
+- Carlos Reyna
+
+- Diego Monroy
 
 Art & Design
 ===========
@@ -21,5 +22,6 @@ Cyndie González
 
 Collaborators
 =============
-Roberto Martinez Román
-Ernesto Franco
+- Roberto Martinez Román
+
+- Ernesto Franco
