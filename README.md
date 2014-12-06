@@ -18,7 +18,7 @@ Developers
 
 Art & Design
 ===========
-Cyndie González
+- Cyndie González
 
 Collaborators
 =============
