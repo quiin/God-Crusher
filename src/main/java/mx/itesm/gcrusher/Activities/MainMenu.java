@@ -23,6 +23,7 @@ public class MainMenu extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);			
 		setContentView(R.layout.activity_main_menu);
+
 		
 		/*SOUND*/
 		mp = MediaPlayer.create(this, R.raw.button_select);								
