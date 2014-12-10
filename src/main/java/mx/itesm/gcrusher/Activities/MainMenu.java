@@ -10,21 +10,25 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
+import mx.itesm.gcrusher.MainFragment;
 import mx.itesm.gcrusher.R;
 
-public class MainMenu extends Activity {	
-	private MediaPlayer mp;	
+public class MainMenu extends FragmentActivity {
+
+    private MainFragment mainFragment;
+    private MediaPlayer mp;
 	public static ArrayList<String> score = new ArrayList<String>();
 	public static boolean soundEnabled = true ,effectsEnabled = true;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);			
-		setContentView(R.layout.activity_main_menu);
+//		setContentView(R.layout.activity_main_menu);
 
-		
+
 		/*SOUND*/
 		mp = MediaPlayer.create(this, R.raw.button_select);								
 		
@@ -35,7 +39,19 @@ public class MainMenu extends Activity {
 	              score.add(pref.getString("segundo", "0 "+"MM DD YY HH MM"));
 	              score.add(pref.getString("tercero", "0 "+"MM DD YY HH MM"));
 	      }
-					
+
+        if (savedInstanceState == null) {
+            // Add the fragment on initial activity setup
+            mainFragment = new MainFragment();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(android.R.id.content, mainFragment)
+                    .commit();
+        } else {
+            // Or set the fragment from restored state info
+            mainFragment = (MainFragment) getSupportFragmentManager()
+                    .findFragmentById(android.R.id.content);
+        }
 		
 	}
 
